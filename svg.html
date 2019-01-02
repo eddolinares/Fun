@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script >
+function clock() {
+	var d = new Date();
+	var segundos = d.getSeconds();
+	var minutos = d.getMinutes();
+	var hora = d.getHours() * 30 + ( minutos / 12 ) * 6 ;
+	minutos = minutos * 6 + (segundos / 10);
+	mili = d.getMilliseconds();
+	segundos = segundos * 6 + (mili/166);	
+	
+	cad = "<svg width='66' height='65' ";
+	cad +="  xmlns=\"http://www.w3.org/2000/svg\" ";
+	cad +="  xmlns:xlink=\"http://www.w3.org/1999/xlink\"> ";
+
+	cad += "<circle cx='33' cy='33' r='2' ";
+	cad += "style='stroke:#6060f0'; fill:#6060f0' >  ";
+	cad +="</circle>";
+
+	cad += "<line x1='33' y1='6' x2='33' y2='40' ";
+	cad += "style='stroke:#faa'  ";
+	cad += "transform='rotate("+segundos+" 33 33)'> "
+	cad +="</line>";
+
+	cad += "<line x1='33' y1='8' x2='33' y2='37' ";
+	cad += "style='stroke:#6060f0; stroke-width:1.5' ";
+	cad += "transform='rotate("+minutos+" 33 33)'> "
+	cad +="</line>";
+
+	cad += "<line x1='33' y1='18' x2='33' y2='33' ";
+	cad += "style='stroke:#6060f0; stroke-width:2' ";
+	cad += "transform='rotate("+hora+" 33 33)'  > "
+	cad +="</line>";
+	cad +="</svg>";
+
+	document.getElementById("clock").innerHTML = cad;
+}
+
+var reloj = setInterval("clock()",300);
+
+</script>
+</head>
+
+<body >
+
+<table width="80%" cellpadding="0" cellspacing="0" >
+<tr height="65">
+<td width="45%" height="68">&nbsp;</td>
+<td width="66" background="clock.png" style="background-repeat:no-repeat" id="clock">&nbsp;</td>
+<td width="*">&nbsp;</td>
+</tr>
+</table>
+</body>
+</html>
